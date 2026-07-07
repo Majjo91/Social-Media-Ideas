@@ -21,20 +21,6 @@
     },
     {
       "parameters": {
-        "url": "https://aibusiness.com/rss.xml",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.rssFeedRead",
-      "typeVersion": 1.2,
-      "position": [
-        224,
-        0
-      ],
-      "id": "d131db6b-c894-4ed5-b8f4-52eb7b33bcaa",
-      "name": "RSS Read"
-    },
-    {
-      "parameters": {
         "select": "channel",
         "channelId": {
           "__rl": true,
@@ -47,7 +33,7 @@
       "type": "n8n-nodes-base.slack",
       "typeVersion": 2.5,
       "position": [
-        1024,
+        576,
         0
       ],
       "id": "9389b0cb-b960-4109-b9dc-976d18e8d0f3",
@@ -69,7 +55,7 @@
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "typeVersion": 1.9,
       "position": [
-        672,
+        224,
         0
       ],
       "id": "468cef46-84f3-49cc-a7e8-0c2eee5db023",
@@ -86,8 +72,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
       "typeVersion": 1,
       "position": [
-        752,
-        224
+        224,
+        336
       ],
       "id": "4b6c4331-d417-4a3b-b26e-053b552f3ee1",
       "name": "Groq Chat Model",
@@ -97,17 +83,6 @@
           "name": "Groq account 2"
         }
       }
-    },
-    {
-      "parameters": {},
-      "type": "n8n-nodes-base.limit",
-      "typeVersion": 1,
-      "position": [
-        448,
-        0
-      ],
-      "id": "e7e61d1d-d839-4a0d-9c68-8acb2b6424cb",
-      "name": "Limit"
     }
   ],
   "connections": {
@@ -115,18 +90,7 @@
       "main": [
         [
           {
-            "node": "RSS Read",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "RSS Read": {
-      "main": [
-        [
-          {
-            "node": "Limit",
+            "node": "Basic LLM Chain",
             "type": "main",
             "index": 0
           }
@@ -150,17 +114,6 @@
           {
             "node": "Basic LLM Chain",
             "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Limit": {
-      "main": [
-        [
-          {
-            "node": "Basic LLM Chain",
-            "type": "main",
             "index": 0
           }
         ]
